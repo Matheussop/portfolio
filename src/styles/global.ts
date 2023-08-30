@@ -22,4 +22,8 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
+  span {
+    color: ${(props) => props.theme.colors.primary};
+  }
+
 `

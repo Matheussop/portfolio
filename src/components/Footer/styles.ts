@@ -22,7 +22,6 @@ export const Infos = styled.footer`
 
     span {
       font-weight: 600;
-      color: ${(props) => props.theme.colors.primary};
     }
   }
 

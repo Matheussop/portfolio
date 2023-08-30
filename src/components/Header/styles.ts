@@ -5,6 +5,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 4rem;
   
   nav {
     display: flex;
@@ -12,11 +13,7 @@ export const HeaderContainer = styled.header`
     justify-content: center;
     gap: 2rem;
   }
-
-  span {
-    color: ${(props) => props.theme.colors.primary};
-  }
-
+  
   a { 
     text-decoration: none;
     color: ${(props) => props.theme.colors.gray};
