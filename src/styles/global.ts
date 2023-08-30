@@ -1,3 +1,4 @@
+"use client";
 import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
@@ -13,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background: ${(props) => props.theme.colors.background};
-    color: ${(props) => props.theme.colors['base-text']};
+    color: ${(props) => props.theme.colors.gray};
     -webkit-font-smoothing: antialiased;
   }
 
