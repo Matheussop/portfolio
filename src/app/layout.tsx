@@ -5,6 +5,7 @@ import StyledComponentsRegistry from './lib/registry'
 import { GlobalStyle } from '../styles/global'
 import { theme } from '../styles/theme'
 import { ThemeProvider } from 'styled-components'
+import { Header } from '@/components/Header'
 import { Container } from './layout.styles'
 
 
@@ -31,6 +32,7 @@ export default function RootLayout({
           <ThemeProvider theme={theme}>
             <GlobalStyle />
             <Container>
+              <Header />
               {children}
             </Container>
           </ThemeProvider>
