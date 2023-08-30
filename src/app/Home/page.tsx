@@ -1,12 +1,57 @@
 'use client'
+
+import { InfoContainer } from "./styles"
+
 export default function Home() {
   return (
     <main >
-      <div >
+      <InfoContainer >
         <p>
           This is the home page
         </p>
-      </div>
+        <p>
+          This is the home page
+        </p>
+        <p>
+          This is the home page
+        </p>
+        <p>
+          This is the home page
+        </p>
+        <p>
+          This is the home page
+        </p>
+        <p>
+          This is the home page
+        </p>
+        <p>
+          This is the home page
+        </p>
+        <p>
+          This is the home page
+        </p>
+        <p>
+          This is the home page
+        </p>
+        <p>
+          This is the home page
+        </p>
+        <p>
+          This is the home page
+        </p>
+        <p>
+          This is the home page
+        </p>
+        <p>
+          This is the home page
+        </p>
+        <p>
+          This is the home page
+        </p>
+        <p>
+          This is the home page
+        </p>
+      </InfoContainer>
     </main>
   )
 }

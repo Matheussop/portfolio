@@ -7,6 +7,7 @@ import { theme } from '../styles/theme'
 import { ThemeProvider } from 'styled-components'
 import { Header } from '@/components/Header'
 import { Container } from './layout.styles'
+import { Footer } from '@/components/Footer'
 
 
 const firaCode = Fira_Code({ 
@@ -34,6 +35,7 @@ export default function RootLayout({
             <Container>
               <Header />
               {children}
+              <Footer />
             </Container>
           </ThemeProvider>
         </StyledComponentsRegistry>
