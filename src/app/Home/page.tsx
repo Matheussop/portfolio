@@ -1,13 +1,45 @@
 'use client'
 
 import  Image  from "next/image"
-import { Block, HomeContainer, ImageContainer, InfoContainer, InfosText } from "./styles"
+import { Block, HomeContainer, ImageContainer, InfoContainer, InfosText, RepositoriesContainer } from "./styles"
 import profilePicture from "../../assets/profilePicture_1.png"
 import {Dots } from "../utils/Dots"
-import Icon from "../icon.svg"
+import { api } from '../lib/axios'
+import apiData from './repositories._api.json'
+import { useEffect, useState } from "react"
+import { RepositoryCard } from "./components/RepositoryCard"
+import Link from "next/link"
+import { TitleSection } from "./components/TitleSection"
+
+const username = 'matheussop'
+
+
+export interface ListRepositories{
+  id: number;
+  name: string;
+  description: string;
+  html_url: string;
+  language?: string;
+}
+
 export default function Home() {
-  console.log("Dots", Dots)
-  console.log("Icon", Icon)
+  const [repositories, setRepositories] = useState<ListRepositories[]>([])
+  useEffect(() => {
+    getRepositories();
+    // setRepositories(apiData)
+    // console.log(apiData)
+  }, [])
+
+  async function  getRepositories(){
+    await api.get("https://api.github.com/users/"+username+"/repos", {
+      params: {
+        per_page: 9,
+        sort : 'updated',
+      }
+    }).then(response => {
+      setRepositories(response.data)
+    })
+  }
 
   return (
     <main >
@@ -29,21 +61,28 @@ export default function Home() {
           <ImageContainer>
             <div>
               <Image src={profilePicture} alt="Imagem de Matheus Spindula"
-                height={300}
+                height={350} priority
               />
             </div>
             <div>
               <Block/>
               <p>Atualmente trabalhando no  
-                <a href="https://www.bb.com.br/site/pra-voce/capitalizacao/">
+                <Link href="https://www.bb.com.br/site/pra-voce/capitalizacao/"
+                  target="_blank">
                   Banco do Brasil
-                </a>
+                </Link>
               </p>
             </div>
             <Dots />
           </ImageContainer>
 
         </InfoContainer>
+        <TitleSection id="Projects" title="Projetos" redirectTitle="Veja Mais"/>
+        <RepositoriesContainer>
+          {repositories.map(repository => (
+            <RepositoryCard key={repository.id} {...repository} />
+          ))}
+        </RepositoriesContainer>
       </HomeContainer>
     </main>
   )

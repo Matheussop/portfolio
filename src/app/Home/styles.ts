@@ -4,14 +4,14 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 4rem;
-  gap: 10rem;
+  gap: 4rem;
 `;
 
 export const InfoContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-
+  margin-bottom: 5rem;
 `;
 
 export const InfosText = styled.div`
@@ -64,7 +64,7 @@ export const ImageContainer = styled.div`
 
   div:not(:first-child) {
     margin-top: -2rem;
-    background-color: ${(props) => props.theme.colors.background};
+    background-color: ${({theme}) => theme.colors.background};
   }
   
   .dots {
@@ -81,5 +81,12 @@ export const Block = styled.div`
   background-color: ${({ theme }) => theme.colors.primary};
   height: 1rem;
   width: 1rem;
+`;
 
+export const RepositoriesContainer = styled.div`
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr 1fr ;
+  gap: 2rem;
+  width: 100%;  
 `;

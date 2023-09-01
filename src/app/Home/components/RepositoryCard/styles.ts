@@ -20,12 +20,13 @@ export const InfosContainer = styled.div`
   flex-direction: column;
   padding: 1rem;
   text-align: left;
-
+  gap: 0.5rem;
   h1{
     color: ${(props) => props.theme.colors.white};
     font-size: 1.5rem;
     font-weight: 500;
   }
+  
 `;
 
 export const LinkContainer = styled.div`

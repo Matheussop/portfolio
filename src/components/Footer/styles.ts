@@ -1,12 +1,12 @@
 import { styled } from "styled-components";
 
 export const FooterContainer = styled.footer`
-  position: fixed;
-  left: 20;
+  position: relative;
+  margin-top: 2rem;
   bottom: 0;
   text-align: center;
   border-top: 1px solid;
-  padding: 1rem 0  2rem 0;
+  padding: 1rem 1rem  2rem 1rem;
   background-color: ${({ theme }) => theme.colors.background};
 `;
 export const Infos = styled.footer`
