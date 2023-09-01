@@ -6,7 +6,7 @@ const MenuItems = [
   {text: "Home", path: "/Home"},
   {text: "Trabalhos", path: "/Home#Works"},
   {text: "Projetos", path: "/Home#Projects"},
-  {text: "Sobre Mim", path: "/Home#About"},
+  {text: "Sobre Mim", path: "/About"},
   {text: "Contato", path: "/Home#Contacts"},
 ]
 export function Header() {

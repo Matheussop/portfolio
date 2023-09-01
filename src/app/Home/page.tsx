@@ -10,9 +10,7 @@ import { useEffect, useState } from "react"
 import { RepositoryCard } from "./components/RepositoryCard"
 import Link from "next/link"
 import { TitleSection } from "./components/TitleSection"
-
-const username = 'matheussop'
-
+import { Metadata } from "next"
 
 export interface ListRepositories{
   id: number;
@@ -25,13 +23,13 @@ export interface ListRepositories{
 export default function Home() {
   const [repositories, setRepositories] = useState<ListRepositories[]>([])
   useEffect(() => {
-    getRepositories();
-    // setRepositories(apiData)
-    // console.log(apiData)
+    // getRepositories();
+    setRepositories(apiData)
+    console.log(apiData)
   }, [])
 
   async function  getRepositories(){
-    await api.get("https://api.github.com/users/"+username+"/repos", {
+    await api.get("https://api.github.com/users/matheussop/repos", {
       params: {
         per_page: 9,
         sort : 'updated',
