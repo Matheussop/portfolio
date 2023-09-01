@@ -9,8 +9,6 @@ export const TitleSectionContainer = styled.div`
   div {
     display: flex;
     align-items: center;
-    width: 70%;
-
     gap: 0.3rem;
 
     h2 {
@@ -30,6 +28,7 @@ export const TitleSectionContainer = styled.div`
 `;
 
 export const Line = styled.div`
+  min-width: 25rem;
   margin-left: 1rem;
   border: 1px solid ${({ theme }) => theme.colors.primary};
   height: 1px;

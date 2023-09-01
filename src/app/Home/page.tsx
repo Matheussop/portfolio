@@ -1,16 +1,17 @@
 'use client'
 
 import  Image  from "next/image"
-import { Block, HomeContainer, ImageContainer, InfoContainer, InfosText, RepositoriesContainer } from "./styles"
+import { Block, HomeContainer, ImageContainer, InfoContainer, InfosText,
+   RepositoriesContainer, SkillsContainer, SkillsFigures, SkillsInfo } from "./styles"
 import profilePicture from "../../assets/profilePicture_1.png"
-import {Dots } from "../utils/Dots"
+import { Dots } from "../utils/Dots"
 import { api } from '../lib/axios'
 import apiData from './repositories._api.json'
 import { useEffect, useState } from "react"
 import { RepositoryCard } from "./components/RepositoryCard"
 import Link from "next/link"
 import { TitleSection } from "./components/TitleSection"
-import { Metadata } from "next"
+import { SkillCard, SkillProps } from "./components/SkillCard"
 
 export interface ListRepositories{
   id: number;
@@ -19,6 +20,18 @@ export interface ListRepositories{
   html_url: string;
   language?: string;
 }
+
+type skillsProps = Omit<SkillProps, 'id'>
+
+const skillsData: skillsProps[] = [
+  {name: 'Languages', description: ['JavaScript', 'TypeScript', 'Java', 'C#', 'Python']},	
+  {name: 'Libs/Frameworks', description: ['React', 'React Native', 'Next', 'Expo', 'Angular', 'Angular.Js', 'PyQt']},		
+  {name: 'Testes Automatizados', description: ['Selenium (Python/Java)', 'Jest(JS/TS)', 'Cypress']},		
+  {name: 'Databases', description: ['Mongo', 'PostgresSQL', 'MYSQL']},
+  {name: 'Ferramentas', description: ['VSCode', 'Eclipse', 'Figma', 'Adobe XD', 'Photoshop', 'Git','Linux','Notion','Vim', 'GitHub', 'GitLab']},
+  {name: 'Metodologias', description: ['Scrum', 'Kanban', 'Trello', 'SMART' ]},
+  {name: 'Other', description: ['HTML', 'CSS', 'SCSS', 'Rest']}
+]
 
 export default function Home() {
   const [repositories, setRepositories] = useState<ListRepositories[]>([])
@@ -31,7 +44,7 @@ export default function Home() {
   async function  getRepositories(){
     await api.get("https://api.github.com/users/matheussop/repos", {
       params: {
-        per_page: 9,
+        per_page: 6,
         sort : 'updated',
       }
     }).then(response => {
@@ -71,16 +84,32 @@ export default function Home() {
                 </Link>
               </p>
             </div>
-            <Dots />
+            <Dots/>
           </ImageContainer>
 
         </InfoContainer>
-        <TitleSection id="Projects" title="Projetos" redirectTitle="Veja Mais"/>
+        <TitleSection id="Projects" title="Últimos Projetos"/>
         <RepositoriesContainer>
           {repositories.map(repository => (
             <RepositoryCard key={repository.id} {...repository} />
           ))}
         </RepositoriesContainer>
+        <TitleSection id="Skills" title="Habilidades"/>
+        <SkillsContainer>
+          <SkillsInfo>
+            {skillsData.map((skill) => (
+              <SkillCard key={skill.name} {...skill} />
+            ))}
+          </SkillsInfo>
+          <SkillsFigures>
+            <Dots className="dots1"/>
+            <Dots className="dots2"/>
+            <div className="square1"/>
+            <div className="square2"/>
+            <div className="line"/>
+            <div className="line2"/>
+          </SkillsFigures>
+        </SkillsContainer>
       </HomeContainer>
     </main>
   )
