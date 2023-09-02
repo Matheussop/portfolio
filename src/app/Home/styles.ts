@@ -95,6 +95,7 @@ export const SkillsContainer = styled.div`
   width: 100%;    
   display: flex;
   flex-direction: row-reverse;
+  justify-content: center;
 `;
 
 export const SkillsInfo = styled.div`
@@ -145,22 +146,22 @@ export const SkillsFigures = styled.div`
   }
 
   .line{
-    width: 200px !important;
+    width: 8rem !important;
     height: 1px;
     position: relative;
     top: -30%;
-    left: 27%;
+    left: 30%;
     width: 12vmin;
     z-index: -1;
     transform: rotate(50deg);
   }
 
   .line2{
-    width: 160px !important;
+    width: 8rem!important;
     height: 1px;
     position: relative;
-    top: -33%;
-    left: 24%;
+    top: -30%;
+    left: 30%;
     width: 12vmin;
     z-index: -1;
     transform: rotate(-35deg);
