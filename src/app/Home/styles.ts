@@ -1,10 +1,88 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const typing  = keyframes`
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    border: none;
+    opacity: 1;
+  }
+`;
+
+const typing2  = keyframes`
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+`;
+
+const typingMenuSession  = keyframes`
+  0% {
+    width: 0;
+    z-index: 1;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+    border: none;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+`;
+
+const lineAnimation  = keyframes`
+  0% {
+    opacity: 0;
+    left: -350px;
+    z-index: -1;
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    left:0;
+  }
+`;
 
 export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 4rem;
   gap: 4rem;
+
+  h2 {
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    width: 100%;
+    animation: ${typingMenuSession} 2s steps(80, end);
+    animation-fill-mode: forwards;
+    background-color: ${({theme}) => theme.colors.background};
+  }
+
+  .line{
+    position: relative;
+    animation: ${lineAnimation} 1s;
+  }
 `;
 
 export const InfoContainer = styled.div`
@@ -19,10 +97,43 @@ export const InfosText = styled.div`
   flex-direction: column;
   gap: 2rem;
   max-width: 60%;
+
+  h1 {
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    letter-spacing: .10em;
+  }
+
+  h1:nth-child(1) {
+    width: 25em;
+    animation: ${typing} 2s steps(40, end);
+    animation-fill-mode: forwards;
+  }
+
+  h1:nth-child(2) {
+    width: 6em;
+    opacity: 0;
+    animation: ${typing2} 1.5s steps(40, end);
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+  }
+
+`;
+
+const easeInLeft = keyframes`
+  0%   {left:500px; top:0px;}
+  100% {left:0px; top:0px;}
+`;
+
+const easeInBottom = keyframes`
+  0%   {left:0px; top:100px;}
+  100% {left:0px; top:0px;}
 `;
 
 export const ImageContainer = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-self: center;
@@ -58,18 +169,24 @@ export const ImageContainer = styled.div`
     align-items: center;
     justify-content: center;
     border: none;
+  }
 
-
+  .blockImage{
+    animation: ${easeInLeft} 1s linear;
+    position: relative;
   }
 
   div:not(:first-child) {
+    display: flex;
+    position: relative;
+    animation: ${easeInBottom} 1s linear;
     margin-top: -2rem;
     background-color: ${({theme}) => theme.colors.background};
   }
   
   .dots {
     position: absolute;
-    top: 20%;
+    top: 0%;
     width: 12vmin;
     left: 75%;
     z-index: -1;

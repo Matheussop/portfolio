@@ -8,7 +8,7 @@ import { AboutContainer, Block, ContactsContainer, HomeContainer, ImageContainer
 import profilePicture from "../../assets/profilePicture_1.png"
 import { Dots } from "../utils/Dots"
 import { api } from '../lib/axios'
-import apiData from './repositories._api.json'
+import apiData from './repositories_api.json'
 import { useEffect, useState } from "react"
 import { RepositoryCard } from "./components/RepositoryCard"
 import Link from "next/link"
@@ -39,7 +39,8 @@ export default function Home() {
   const [repositories, setRepositories] = useState<ListRepositories[]>([])
   useEffect(() => {
     // getRepositories();
-    setRepositories(apiData)
+    const data:ListRepositories[] = apiData as ListRepositories[];
+    setRepositories(data)
     console.log(apiData)
   }, [])
 
@@ -61,9 +62,11 @@ export default function Home() {
           <InfosText>
             <h1>Eu sou um desenvolvedor 
               <span> front-end </span>
+            </h1>
+            <h1>
               e 
               <span> mobile</span>
-              </h1>
+            </h1>
             <p>
               Olá! Sou o Matheus. Tenho paixão por solucionar desafios tecnológicos.
               Estou sempre em busca de oportunidades para aprender e crescer na 
@@ -71,7 +74,7 @@ export default function Home() {
             </p>
           </InfosText>
           <ImageContainer>
-            <div>
+            <div className="blockImage">
               <Image src={profilePicture} alt="Imagem de Matheus Spindula"
                 height={350} priority
               />

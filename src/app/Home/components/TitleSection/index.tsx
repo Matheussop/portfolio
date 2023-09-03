@@ -14,7 +14,7 @@ export function TitleSection({title, redirectTitle, id, redirectUrl=''}: TitleSe
     <TitleSectionContainer id={id}>
       <div>
         <span>#</span><h2>{title}</h2>
-        <Line/>
+        <Line className="line"/>
       </div>
       {redirectTitle && <Link href={redirectUrl} >{redirectTitleFormatted} </Link>}
     </TitleSectionContainer>

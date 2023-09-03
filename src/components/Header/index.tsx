@@ -6,8 +6,8 @@ const MenuItems = [
   {text: "Home", path: "/Home"},
   {text: "Trabalhos", path: "/Home#Works"},
   {text: "Projetos", path: "/Home#Projects"},
-  {text: "Sobre Mim", path: "/About"},
-  {text: "Contato", path: "/Home#Contacts"},
+  {text: "Sobre Mim", path: "/Home#About"},
+  {text: "Contato", path: "/Home#Contact"},
 ]
 export function Header() {
   const pathName = usePathname()
