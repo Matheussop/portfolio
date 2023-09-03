@@ -1,7 +1,7 @@
 'use client'
-
+import { EnvelopeFill, Linkedin } from "@styled-icons/bootstrap";
 import  Image  from "next/image"
-import { AboutContainer, Block, HomeContainer, ImageContainer, 
+import { AboutContainer, Block, ContactsContainer, HomeContainer, ImageContainer, 
   InfoContainer, InfosText,
   RepositoriesContainer, SkillsContainer,
    SkillsFigures, SkillsInfo } from "./styles"
@@ -131,6 +131,25 @@ export default function Home() {
             </p>
           </div>
         </AboutContainer>
+        <TitleSection id="Contact" title="Contatos"/>
+        <ContactsContainer>
+          <div>
+            <p>
+              Estou interessado in oportunidades para aprender e crescer na minha carreira de desenvolvedor.
+              Atualmente tenho preferencia para a utilização de React, React Native, Next, Expo. Caso tenha alguma dúvida ou convite,
+              não deixe de contactar-me.
+            </p>
+          </div>
+          <div>
+            <h3>Envie mensagem em: </h3>
+            <a href="mailto:<EMAIL>">
+              <EnvelopeFill size="1.5rem"/>
+              matheussopluiz@outlook.com</a>
+            <a href="https://www.linkedin.com/in/matheus-spindula/">
+              <Linkedin size="1.5rem"/>
+              matheus-spindula</a>
+          </div>
+        </ContactsContainer>
       </HomeContainer>
     </main>
   )

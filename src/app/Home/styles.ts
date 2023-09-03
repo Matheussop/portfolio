@@ -104,6 +104,7 @@ export const SkillsInfo = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem ;
 `;
+
 export const SkillsFigures = styled.div`
   min-width: 400px;
 
@@ -194,6 +195,51 @@ export const AboutContainer = styled.div`
       color: #F9DD16;
       font-weight: 600;
       text-decoration: none;
+    }
+  }
+`;
+
+export const ContactsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+  div{ 
+    display: flex;
+    flex-direction: column;
+  }
+
+  div p {
+    color: ${(props) => props.theme.colors.gray};
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6rem;
+  }
+
+  div:first-child {
+    max-width: 50%;
+  }
+  div:not(:first-child) {
+    display: flex;
+    align-items: "center";
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid ${(props) => props.theme.colors.white};
+
+    h3 {
+      color: ${(props) => props.theme.colors.white};
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    a {
+      text-decoration: none;
+      color: ${(props) => props.theme.colors.gray};
+
+      svg {
+        margin-right: 0.4rem;
+      }
     }
   }
 `;
