@@ -3,15 +3,18 @@ import styled, { keyframes } from "styled-components";
 const typing  = keyframes`
   0% {
     width: 0;
-    opacity: 0;
   }
-  99.9% {
-    border-right: .15em solid orange;
-  }
-  100% {
-    border: none;
+  1% {
     opacity: 1;
   }
+  99.9% {
+    border-right: .15em solid #EC6452;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+
 `;
 
 const typing2  = keyframes`
@@ -22,7 +25,7 @@ const typing2  = keyframes`
     opacity: 1;
   }
   99.9% {
-    border-right: .15em solid orange;
+    border-right: .15em solid #EC6452;
   }
   100% {
     opacity: 1;
@@ -39,8 +42,7 @@ const typingMenuSession  = keyframes`
     opacity: 1;
   }
   99.9% {
-    border-right: .15em solid orange;
-    border: none;
+    border-right: .15em solid #EC6452;
   }
   100% {
     opacity: 1;
@@ -72,9 +74,9 @@ export const HomeContainer = styled.div`
   h2 {
     white-space: nowrap;
     overflow: hidden;
-    border-right: .15em solid orange;
+    border-right: .15em solid ${({ theme }) => theme.colors.primary};
     width: 100%;
-    animation: ${typingMenuSession} 2s steps(80, end);
+    animation: ${typingMenuSession} 2s steps(40, end);
     animation-fill-mode: forwards;
     background-color: ${({theme}) => theme.colors.background};
   }
@@ -101,21 +103,24 @@ export const InfosText = styled.div`
   h1 {
     white-space: nowrap;
     overflow: hidden;
-    border-right: .15em solid orange;
+    border-right: .15em solid ${({ theme }) => theme.colors.primary};
     letter-spacing: .10em;
   }
 
   h1:nth-child(1) {
-    width: 25em;
-    animation: ${typing} 2s steps(40, end);
+    width: 24em;
+    animation: ${typing} 3s steps(40, end);
+    -webkit-animation: ${typing} 3s steps(40, end);
     animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+
   }
 
   h1:nth-child(2) {
     width: 6em;
     opacity: 0;
-    animation: ${typing2} 1.5s steps(40, end);
-    animation-delay: 2s;
+    animation: ${typing2} 1.5s steps(20, end);
+    animation-delay: 3s;
     animation-fill-mode: forwards;
   }
 
@@ -320,6 +325,7 @@ export const ContactsContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   
   div{ 
     display: flex;
