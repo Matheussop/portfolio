@@ -1,8 +1,10 @@
 'use client'
 
 import  Image  from "next/image"
-import { Block, HomeContainer, ImageContainer, InfoContainer, InfosText,
-   RepositoriesContainer, SkillsContainer, SkillsFigures, SkillsInfo } from "./styles"
+import { AboutContainer, Block, HomeContainer, ImageContainer, 
+  InfoContainer, InfosText,
+  RepositoriesContainer, SkillsContainer,
+   SkillsFigures, SkillsInfo } from "./styles"
 import profilePicture from "../../assets/profilePicture_1.png"
 import { Dots } from "../utils/Dots"
 import { api } from '../lib/axios'
@@ -63,10 +65,9 @@ export default function Home() {
               <span> mobile</span>
               </h1>
             <p>
-            Olá! Sou o Matheus, um profissional dedicado e entusiasta na área 
-            de TI. Estou no mercado desde 2020, atuando mais focado na 
-            área de front-end. Meu entusiasmo pelo mundo da tecnologia me levou a 
-            me formar em Ciência da Computação, uma jornada que me proporcionou uma base sólida de conhecimento e habilidades. 
+              Olá! Sou o Matheus. Tenho paixão por solucionar desafios tecnológicos.
+              Estou sempre em busca de oportunidades para aprender e crescer na 
+              minha carreira de desenvolvedor.
             </p>
           </InfosText>
           <ImageContainer>
@@ -110,6 +111,26 @@ export default function Home() {
             <div className="line2"/>
           </SkillsFigures>
         </SkillsContainer>
+        <TitleSection id="About" title="Sobre-Mim"/>
+        <AboutContainer>
+          <div>
+            <p>Ola, sou o Matheus Spindula</p>
+            <p>
+              Um profissional dedicado e entusiasta na área 
+              de TI. Estou no mercado desde 2020, atuando mais focado na 
+              área de front-end. Meu entusiasmo pelo mundo da tecnologia me levou a 
+              me formar em Ciência da Computação, uma jornada que me proporcionou uma base sólida de conhecimento e habilidades.
+            </p>
+            <p>
+              Atualmente trabalhando no  
+              <Link href="https://www.bb.com.br/site/pra-voce/capitalizacao/"
+                target="_blank">
+                 Banco do Brasil
+              </Link> como desenvolvedor front-end (angular) e mobile. Tendo também algumas atuações em back-end utilizando Java
+
+            </p>
+          </div>
+        </AboutContainer>
       </HomeContainer>
     </main>
   )
