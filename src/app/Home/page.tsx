@@ -14,6 +14,7 @@ import { RepositoryCard } from "./components/RepositoryCard"
 import Link from "next/link"
 import { TitleSection } from "./components/TitleSection"
 import { SkillCard, SkillProps } from "./components/SkillCard"
+import { SkeletonCard } from "./components/SkeletonCard";
 
 export interface ListRepositories{
   id: number;
@@ -36,11 +37,14 @@ const skillsData: skillsProps[] = [
 ]
 
 export default function Home() {
-  const [repositories, setRepositories] = useState<ListRepositories[]>([])
+  const [repositories, setRepositories] = useState<ListRepositories[]>()
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     // getRepositories();
     const data:ListRepositories[] = apiData as ListRepositories[];
-    setRepositories(data)
+    setTimeout(() => {
+      setRepositories(data)
+    }, 1000)
     console.log(apiData)
   }, [])
 
@@ -94,9 +98,13 @@ export default function Home() {
         </InfoContainer>
         <TitleSection id="Projects" title="Últimos Projetos"/>
         <RepositoriesContainer>
-          {repositories.map(repository => (
+          
+          {repositories ? repositories.map(repository => (
             <RepositoryCard key={repository.id} {...repository} />
-          ))}
+          )) : [...Array(6).keys()].map(index => (
+            <SkeletonCard key={index}/>
+          ))
+          }
         </RepositoriesContainer>
         <TitleSection id="Skills" title="Habilidades"/>
         <SkillsContainer>
