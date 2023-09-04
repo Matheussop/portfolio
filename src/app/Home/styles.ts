@@ -65,6 +65,16 @@ const lineAnimation  = keyframes`
   }
 `;
 
+const cardsAnimation = keyframes`
+  to {
+    top: 0;
+  }
+
+  from {
+    top: 350px;
+  }
+`;
+
 export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -210,6 +220,11 @@ export const RepositoriesContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr ;
   gap: 2rem;
   width: 100%;  
+  position: relative;
+  animation: ${cardsAnimation} 2s ;
+  z-index: 4;
+  background-color: ${(props) => props.theme.colors.background};
+
 `;
 
 export const SkillsContainer = styled.div`
@@ -218,6 +233,9 @@ export const SkillsContainer = styled.div`
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
+  z-index: 1;
+  background-color: ${(props) => props.theme.colors.background};
+  position: relative;
 `;
 
 export const SkillsInfo = styled.div`

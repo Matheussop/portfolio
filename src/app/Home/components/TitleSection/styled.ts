@@ -5,6 +5,8 @@ export const TitleSectionContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  z-index: 1;
+  background-color: ${(props) => props.theme.colors.background};
 
   div {
     display: flex;
