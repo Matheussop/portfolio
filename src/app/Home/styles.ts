@@ -154,7 +154,6 @@ export const ImageContainer = styled.div`
   align-self: center;
 
   Img { 
-    transform: scaleX(-1);
     z-index: 1;
 
   }
@@ -195,7 +194,7 @@ export const ImageContainer = styled.div`
     display: flex;
     position: relative;
     animation: ${easeInBottom} 1s linear;
-    margin-top: -2rem;
+    margin-top: -0.5rem;
     background-color: ${({theme}) => theme.colors.background};
   }
   
@@ -224,7 +223,7 @@ export const RepositoriesContainer = styled.div`
   animation: ${cardsAnimation} 2s ;
   z-index: 4;
   background-color: ${(props) => props.theme.colors.background};
-
+  overflow: hidden;
 `;
 
 export const SkillsContainer = styled.div`
@@ -236,6 +235,7 @@ export const SkillsContainer = styled.div`
   z-index: 1;
   background-color: ${(props) => props.theme.colors.background};
   position: relative;
+  overflow: hidden;
 `;
 
 export const SkillsInfo = styled.div`
@@ -297,6 +297,7 @@ export const SkillsFigures = styled.div`
     z-index: -1;
     transform: rotate(50deg);
     border-color: ${(props) => props.theme.colors.white};
+    animation: none;
   }
 
   .line2{

@@ -5,7 +5,7 @@ import { AboutContainer, Block, ContactsContainer, HomeContainer, ImageContainer
   InfoContainer, InfosText,
   RepositoriesContainer, SkillsContainer,
    SkillsFigures, SkillsInfo } from "./styles"
-import profilePicture from "../../assets/profilePicture_1.png"
+import profilePicture from "../../assets/profileImage_3.png"
 import { Dots } from "../utils/Dots"
 import { api } from '../lib/axios'
 import apiData from './repositories_api.json'
@@ -106,22 +106,6 @@ export default function Home() {
           ))
           }
         </RepositoriesContainer>
-        <TitleSection id="Skills" title="Habilidades"/>
-        <SkillsContainer>
-          <SkillsInfo>
-            {skillsData.map((skill) => (
-              <SkillCard key={skill.name} {...skill} />
-            ))}
-          </SkillsInfo>
-          <SkillsFigures>
-            <Dots className="dots1"/>
-            <Dots className="dots2"/>
-            <div className="square1"/>
-            <div className="square2"/>
-            <div className="line"/>
-            <div className="line2"/>
-          </SkillsFigures>
-        </SkillsContainer>
         <TitleSection id="About" title="Sobre-Mim"/>
         <AboutContainer>
           <div>
@@ -142,11 +126,27 @@ export default function Home() {
             </p>
           </div>
         </AboutContainer>
+        <TitleSection id="Skills" title="Habilidades"/>
+        <SkillsContainer>
+          <SkillsInfo>
+            {skillsData.map((skill) => (
+              <SkillCard key={skill.name} {...skill} />
+            ))}
+          </SkillsInfo>
+          <SkillsFigures>
+            <Dots className="dots1"/>
+            <Dots className="dots2"/>
+            <div className="square1"/>
+            <div className="square2"/>
+            <div className="line"/>
+            <div className="line2"/>
+          </SkillsFigures>
+        </SkillsContainer>
         <TitleSection id="Contact" title="Contatos"/>
         <ContactsContainer>
           <div>
             <p>
-              Estou interessado in oportunidades para aprender e crescer na minha carreira de desenvolvedor.
+              Estou interessado em oportunidades para aprender e crescer na minha carreira de desenvolvedor.
               Atualmente tenho preferencia para a utilização de React, React Native, Next, Expo. Caso tenha alguma dúvida ou convite,
               não deixe de contactar-me.
             </p>
