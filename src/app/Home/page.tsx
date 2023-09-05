@@ -1,10 +1,10 @@
 'use client'
 import { EnvelopeFill, Linkedin } from "@styled-icons/bootstrap";
 import  Image  from "next/image"
-import { AboutContainer, Block, ContactsContainer, HomeContainer, ImageContainer, 
-  InfoContainer, InfosText,
-  RepositoriesContainer, SkillsContainer,
-   SkillsFigures, SkillsInfo } from "./styles"
+import { AboutContainer, Block, ContactsContainer, HomeContainer,
+  ImageContainer, InfoContainer, InfosText,
+  RepositoriesContainer, Separator, SkillsContainer,
+  SkillsFigures, SkillsInfo, WorksContainer } from "./styles"
 import profilePicture from "../../assets/profileImage_3.png"
 import { Dots } from "../utils/Dots"
 import { api } from '../lib/axios'
@@ -15,6 +15,7 @@ import Link from "next/link"
 import { TitleSection } from "./components/TitleSection"
 import { SkillCard, SkillProps } from "./components/SkillCard"
 import { SkeletonCard } from "./components/SkeletonCard";
+import { WorksCard, WorksCardProps } from "./components/WorksCard";
 
 export interface ListRepositories{
   id: number;
@@ -36,13 +37,51 @@ const skillsData: skillsProps[] = [
   {name: 'Other', description: ['HTML', 'CSS', 'SCSS', 'Rest']}
 ]
 
+const worksData: WorksCardProps[] = [
+  {
+    title: 'Desenvolvedor Mobile e Web - Banco do Brasil',
+    companyName: 'Capgemini',
+    date: 'Março de 2022 - Até o momento',
+    locale: 'Belo Horizonte, Minas Gerais, Brasil',
+    period: 'Tempo integral',
+  },
+  {
+    title: 'Desenvolvedor',
+    companyName: 'Tribunal de Contas do Estado de Minas Gerais',
+    date: 'Outubro de 2021 - Março de 2022 ',
+    locale: 'Belo Horizonte, Minas Gerais, Brasil',
+    period: 'Tempo integral',
+  }, 
+  {
+    title: 'Desenvolvedor de front-end',
+    companyName: 'Inova Tecnologia',
+    date: 'Fevereiro de 2021 - Outubro de 2021',
+    locale: 'Belo Horizonte, Minas Gerais, Brasil',
+    period: 'Meio período',
+  }, 
+  {
+    title: 'Estagiário',
+    companyName: 'Grupo Otimiza',
+    date: 'Janeiro de 2020 - Fevereiro de 2021',
+    locale: 'Belo Horizonte, Minas Gerais, Brasil',
+    period: 'Estágio',
+  },
+  {
+    title: 'Desenvolvedor Web com WordPress',
+    companyName: 'Grupo Escalar',
+    date: 'Fevereiro de 2019 - Janeiro de 2020 ·',
+    locale: 'Belo Horizonte, Minas Gerais, Brasil',
+    period: 'Meio período',
+  }
+]
+
 export default function Home() {
   const [repositories, setRepositories] = useState<ListRepositories[]>()
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    // getRepositories();
     const data:ListRepositories[] = apiData as ListRepositories[];
     setTimeout(() => {
+      // getRepositories();
       setRepositories(data)
     }, 1000)
     console.log(apiData)
@@ -126,6 +165,15 @@ export default function Home() {
             </p>
           </div>
         </AboutContainer>
+        <TitleSection id="Works" title="Experiências"/>
+        <WorksContainer>
+          {worksData.map(work => (
+            <div  key={work.title}>
+              <WorksCard {...work} />
+              <Separator/>
+            </div>
+          ))}
+        </WorksContainer>
         <TitleSection id="Skills" title="Habilidades"/>
         <SkillsContainer>
           <SkillsInfo>

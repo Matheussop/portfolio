@@ -361,6 +361,7 @@ export const ContactsContainer = styled.div`
   div:first-child {
     max-width: 50%;
   }
+
   div:not(:first-child) {
     display: flex;
     align-items: "center";
@@ -386,3 +387,16 @@ export const ContactsContainer = styled.div`
   }
 `;
 
+export const WorksContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0rem 3rem;
+  div {
+    margin-bottom: 1rem;
+  }
+`;
+
+export const Separator = styled.div`
+  width: 70%;
+  border-bottom: 1px solid ${(props) => props.theme.colors.white};
+`;
