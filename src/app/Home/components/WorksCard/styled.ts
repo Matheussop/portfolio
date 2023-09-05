@@ -19,7 +19,7 @@ export const WorksContainer = styled.div`
     font-weight: 500;
     animation: none;
     border: none;
-
+    white-space: normal;
   }
 
   p {

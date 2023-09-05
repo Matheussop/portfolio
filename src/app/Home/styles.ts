@@ -388,9 +388,10 @@ export const ContactsContainer = styled.div`
 `;
 
 export const WorksContainer = styled.div`
-  display: flex;
-  flex-direction: column;
   padding: 0rem 3rem;
+  display: grid;
+  grid-template-columns: 33rem 33rem;
+  gap: 1rem;
   div {
     margin-bottom: 1rem;
   }
