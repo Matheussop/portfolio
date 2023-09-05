@@ -165,7 +165,7 @@ export default function Home() {
             </p>
           </div>
         </AboutContainer>
-        <TitleSection id="Works" title="Experiências"/>
+        <TitleSection id="Works" title="Trabalhos"/>
         <WorksContainer>
           {worksData.map(work => (
             <div  key={work.title}>

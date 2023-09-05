@@ -4,9 +4,10 @@ import { usePathname } from 'next/navigation'
 
 const MenuItems = [
   {text: "Home", path: "/Home"},
-  {text: "Trabalhos", path: "/Home#Works"},
   {text: "Projetos", path: "/Home#Projects"},
   {text: "Sobre Mim", path: "/Home#About"},
+  {text: "Trabalhos", path: "/Home#Works"},
+  {text: "Habilidades", path: "/Home#Skills"},
   {text: "Contato", path: "/Home#Contact"},
 ]
 export function Header() {
