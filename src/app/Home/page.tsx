@@ -69,7 +69,7 @@ const worksData: WorksCardProps[] = [
   {
     title: 'Desenvolvedor Web com WordPress',
     companyName: 'Grupo Escalar',
-    date: 'Fevereiro de 2019 - Janeiro de 2020 ·',
+    date: 'Fevereiro de 2019 - Janeiro de 2020',
     locale: 'Belo Horizonte, Minas Gerais, Brasil',
     period: 'Meio período',
   }

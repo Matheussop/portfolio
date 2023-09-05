@@ -17,9 +17,9 @@ export const WorksContainer = styled.div`
   h2 {
     font-size: 1.2rem;
     font-weight: 500;
-    animation: none;
-    border: none;
-    white-space: normal;
+    animation: none !important;
+    border: none !important;
+    white-space: normal !important;
   }
 
   p {

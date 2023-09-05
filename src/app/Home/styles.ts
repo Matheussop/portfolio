@@ -390,8 +390,10 @@ export const ContactsContainer = styled.div`
 export const WorksContainer = styled.div`
   padding: 0rem 3rem;
   display: grid;
-  grid-template-columns: 33rem 33rem;
+  grid-template-columns: auto auto;
   gap: 1rem;
+  align-content: space-evenly;
+
   div {
     margin-bottom: 1rem;
   }
