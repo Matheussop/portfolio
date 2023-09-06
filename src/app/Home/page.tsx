@@ -81,8 +81,8 @@ export default function Home() {
   useEffect(() => {
     const data:ListRepositories[] = apiData as ListRepositories[];
     setTimeout(() => {
-      // getRepositories();
-      setRepositories(data)
+      getRepositories();
+      // setRepositories(data)
     }, 1000)
     console.log(apiData)
   }, [])
