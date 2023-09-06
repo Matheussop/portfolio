@@ -8,7 +8,6 @@ import { AboutContainer, Block, ContactsContainer, HomeContainer,
 import profilePicture from "../../assets/profileImage_3.png"
 import { Dots } from "../utils/Dots"
 import { api } from '../lib/axios'
-import apiData from './repositories_api.json'
 import { useEffect, useState } from "react"
 import { RepositoryCard } from "./components/RepositoryCard"
 import Link from "next/link"
@@ -81,10 +80,9 @@ export default function Home() {
   useEffect(() => {
     const data:ListRepositories[] = apiData as ListRepositories[];
     setTimeout(() => {
-      // getRepositories();
-      setRepositories(data)
+      getRepositories();
+      // setRepositories(data)
     }, 1000)
-    console.log(apiData)
   }, [])
 
   async function  getRepositories(){
