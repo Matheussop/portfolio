@@ -78,7 +78,7 @@ export default function Home() {
   const [repositories, setRepositories] = useState<ListRepositories[]>()
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    const data:ListRepositories[] = apiData as ListRepositories[];
+    // const data:ListRepositories[] = apiData as ListRepositories[];
     setTimeout(() => {
       getRepositories();
       // setRepositories(data)
