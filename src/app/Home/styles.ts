@@ -102,6 +102,11 @@ export const InfoContainer = styled.div`
   flex-direction: row;
   align-items: center;
   margin-bottom: 5rem;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 export const InfosText = styled.div`
@@ -109,6 +114,11 @@ export const InfosText = styled.div`
   flex-direction: column;
   gap: 2rem;
   max-width: 60%;
+
+  @media (max-width: 1024px) {
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
 
   h1 {
     white-space: nowrap;
@@ -224,6 +234,10 @@ export const RepositoriesContainer = styled.div`
   z-index: 4;
   background-color: ${(props) => props.theme.colors.background};
   overflow: hidden;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 export const SkillsContainer = styled.div`
@@ -236,6 +250,10 @@ export const SkillsContainer = styled.div`
   background-color: ${(props) => props.theme.colors.background};
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 1024px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const SkillsInfo = styled.div`
@@ -243,6 +261,10 @@ export const SkillsInfo = styled.div`
   justify-items: center;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem ;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 export const SkillsFigures = styled.div`
@@ -261,6 +283,10 @@ export const SkillsFigures = styled.div`
     width: 10vmin;
     left: 65%;
     z-index: -1;
+
+    @media (max-width: 1024px) {
+      top: 10rem;
+    }
   }
 
   .dots2 {
@@ -269,6 +295,11 @@ export const SkillsFigures = styled.div`
     left: -20%;
     width: 10vmin;
     z-index: -1;
+
+    @media (max-width: 1024px) {
+      top: 2%;
+      left: 0%;
+    }
   }
 
   .square1 {
@@ -277,6 +308,11 @@ export const SkillsFigures = styled.div`
     left: 60%;
     width: 10vmin;
     z-index: -1;
+
+    @media (max-width: 1024px) {
+      left: 60%;
+      top: -6rem;
+    }
   }
 
   .square2 {
@@ -285,6 +321,12 @@ export const SkillsFigures = styled.div`
     left: 0%;
     width: 10vmin;
     z-index: -1;
+
+    @media (max-width: 1024px) {
+      left: 15%;
+      top: 23%;
+      position: sticky;
+    }
   }
 
   .line{
@@ -298,6 +340,11 @@ export const SkillsFigures = styled.div`
     transform: rotate(50deg);
     border-color: ${(props) => props.theme.colors.white};
     animation: none;
+
+    @media (max-width: 1024px) {
+      top: -10rem;
+      left: 35%;
+    }
   }
 
   .line2{
@@ -311,6 +358,10 @@ export const SkillsFigures = styled.div`
     transform: rotate(-35deg);
     border-color: ${(props) => props.theme.colors.white};
 
+    @media (max-width: 1024px) {
+      top: -10rem;
+      left: 35%;
+    }
   }
 
 `;

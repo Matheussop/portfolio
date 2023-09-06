@@ -9,5 +9,9 @@ export const Container = styled.div`
  
   > * {
     width: 70%;
+
+    @media (max-width: 1540px) {
+      width: 95%;
+    }
   }
 `
