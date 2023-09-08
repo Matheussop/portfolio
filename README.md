@@ -2,7 +2,7 @@
   🧑‍💻<br>Portfólio - Matheus Spindula
 </h1>
 
-Projeto (em andamento) que apresenta meu portfólio
+Projeto base finalizado que apresenta meu portfólio
 
 #####  Contendo as seguintes seções: 
  - Home
