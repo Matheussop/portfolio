@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Fira_Code } from 'next/font/google'
 import { GlobalStyle } from '../styles/global'
-
+import { Analytics } from "@vercel/analytics/react"
 
 import Providers from './Providers'
 
@@ -26,6 +26,7 @@ export default function RootLayout({
     <html lang="pt-br">
       <body className={firaCode.className}>
         <Providers>
+          <Analytics/>
           <GlobalStyle />
           {children}
         </Providers>
