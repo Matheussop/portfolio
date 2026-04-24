@@ -5,6 +5,7 @@ import { Line, MediasContainer } from "./styled";
 export function Medias(){
   return (
     <MediasContainer>
+      <span>Social</span>
       <Line/>
       <Link href="https://github.com/Matheussop" target="_blank" rel="noopener noreferrer">
         <Github size="2rem"/>
