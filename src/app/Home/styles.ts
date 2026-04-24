@@ -1,456 +1,426 @@
-import styled, { keyframes } from "styled-components";
+import Link from 'next/link'
+import styled, { css, keyframes } from 'styled-components'
 
-const typing  = keyframes`
-  0% {
-    width: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-  99.9% {
-    border-right: .15em solid #EC6452;
-  }
-  100% {
-    opacity: 1;
-    border: none;
+const float = keyframes`
+  0%, 100% {
+    transform: translateY(0px);
   }
 
-`;
+  50% {
+    transform: translateY(-14px);
+  }
+`
 
-const typing2  = keyframes`
-  0% {
-    width: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-  99.9% {
-    border-right: .15em solid #EC6452;
-  }
-  100% {
-    opacity: 1;
-    border: none;
-  }
-`;
-
-const typingMenuSession  = keyframes`
-  0% {
-    width: 0;
-    z-index: 1;
-  }
-  1% {
-    opacity: 1;
-  }
-  99.9% {
-    border-right: .15em solid #EC6452;
-  }
-  100% {
-    opacity: 1;
-    border: none;
-  }
-`;
-
-const lineAnimation  = keyframes`
-  0% {
-    opacity: 0;
-    left: -350px;
-    z-index: -1;
-  }
-  30% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-    left:0;
-  }
-`;
-
-const cardsAnimation = keyframes`
-  to {
-    top: 0;
+const pulse = keyframes`
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(211, 161, 108, 0.35);
   }
 
-  from {
-    top: 350px;
+  50% {
+    transform: scale(1.12);
+    box-shadow: 0 0 0 12px rgba(211, 161, 108, 0);
   }
-`;
+`
+
+const buttonStyle = css`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-width: 10rem;
+  padding: 0.95rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease,
+    color 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+`
+
+const panelStyle = css`
+  position: relative;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: 1.75rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 24px 60px -42px ${({ theme }) => theme.colors.shadow};
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 45%);
+    pointer-events: none;
+  }
+`
 
 export const HomeContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin-top: 4rem;
-  gap: 4rem;
+  gap: clamp(4rem, 7vw, 7rem);
+  padding: clamp(1rem, 4vw, 3rem) 0 5rem;
 
-  h2 {
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: .15em solid ${({ theme }) => theme.colors.primary};
-    width: 100%;
-    animation: ${typingMenuSession} 2s steps(40, end);
-    animation-fill-mode: forwards;
-    background-color: ${({theme}) => theme.colors.background};
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(90px);
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
   }
 
-  .line{
-    position: relative;
-    animation: ${lineAnimation} 1s;
+  &::before {
+    width: 18rem;
+    height: 18rem;
+    top: 3rem;
+    right: 2rem;
+    background: rgba(211, 161, 108, 0.18);
   }
-`;
 
-export const InfoContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 5rem;
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    align-items: flex-start;
+  &::after {
+    width: 14rem;
+    height: 14rem;
+    left: -2rem;
+    top: 30rem;
+    background: rgba(85, 115, 184, 0.14);
   }
-`;
+`
 
-export const InfosText = styled.div`
+export const Section = styled.section`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-width: 60%;
+  scroll-margin-top: 8rem;
+  z-index: 1;
+`
 
-  @media (max-width: 1024px) {
-    max-width: 100%;
-    margin-bottom: 2rem;
-  }
-
-  h1 {
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: .15em solid ${({ theme }) => theme.colors.primary};
-    letter-spacing: .10em;
-  }
-
-  h1:nth-child(1) {
-    width: 24em;
-    animation: ${typing} 3s steps(40, end);
-    -webkit-animation: ${typing} 3s steps(40, end);
-    animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
-
-  }
-
-  h1:nth-child(2) {
-    width: 6em;
-    opacity: 0;
-    animation: ${typing2} 1.5s steps(20, end);
-    animation-delay: 3s;
-    animation-fill-mode: forwards;
-  }
-
-`;
-
-const easeInLeft = keyframes`
-  0%   {left:500px; top:0px;}
-  100% {left:0px; top:0px;}
-`;
-
-const easeInBottom = keyframes`
-  0%   {left:0px; top:100px;}
-  100% {left:0px; top:0px;}
-`;
-
-export const ImageContainer = styled.div`
-  display: flex;
+export const HeroSection = styled.section`
   position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  min-height: calc(100vh - 13rem);
+  z-index: 1;
+
+  @media (max-width: 980px) {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+`
+
+export const HeroContent = styled.div`
+  display: flex;
   flex-direction: column;
+  gap: 1.5rem;
+  max-width: 44rem;
+`
+
+export const HeroEyebrow = styled.p`
+  width: fit-content;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid ${({ theme }) => theme.colors.borderStrong};
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: ${({ theme }) => theme.colors.primaryStrong};
+  font-family: var(--font-mono), monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+`
+
+export const HeroTitle = styled.h1`
+  color: ${({ theme }) => theme.colors.text};
+  font-size: clamp(3.1rem, 7vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.07em;
+  font-weight: 800;
+
+  span {
+    color: ${({ theme }) => theme.colors.primary};
+  }
+`
+
+export const HeroDescription = styled.p`
+  max-width: 38rem;
+  color: ${({ theme }) => theme.colors.textMuted};
+  font-size: clamp(1rem, 1.45vw, 1.16rem);
+  line-height: 1.9;
+`
+
+export const HeroActions = styled.div`
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+`
+
+export const PrimaryLink = styled(Link)`
+  ${buttonStyle}
+  color: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.colors.primary};
+  box-shadow: 0 22px 50px -30px rgba(211, 161, 108, 0.9);
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.primaryStrong};
+  }
+`
+
+export const SecondaryLink = styled(Link)`
+  ${buttonStyle}
+  color: ${({ theme }) => theme.colors.text};
+  border: 1px solid ${({ theme }) => theme.colors.borderStrong};
+  background: rgba(255, 255, 255, 0.03);
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.primary};
+    background: ${({ theme }) => theme.colors.primaryMuted};
+  }
+`
+
+export const HeroVisual = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  align-self: center;
+  min-height: 34rem;
 
-  Img { 
+  @media (max-width: 980px) {
+    min-height: auto;
+  }
+`
+
+export const PortraitFrame = styled.div`
+  ${panelStyle}
+  width: min(100%, 30rem);
+  padding: clamp(1rem, 3vw, 1.5rem);
+
+  .imageWrap {
+    position: relative;
     z-index: 1;
-
+    border-radius: 1.4rem;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(17, 23, 32, 0.6), rgba(17, 23, 32, 0.15));
   }
 
-  div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    border: 1px solid ${(props) => props.theme.colors.gray};
-    color: ${(props) => props.theme.colors.gray};
-    padding: 0.5rem;
-    font-weight: 500;
-
-    a { 
-      padding-left: 0.5rem;
-      color: #F9DD16;
-      font-weight: 600;
-      text-decoration: none;
-    }
-  }
-  
-  div:first-child {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    border: none;
+  .portraitImage {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    filter: grayscale(10%) saturate(0.92) contrast(1.04);
   }
 
-  .blockImage{
-    animation: ${easeInLeft} 1s linear;
-    position: relative;
-  }
-
-  div:not(:first-child) {
-    display: flex;
-    position: relative;
-    animation: ${easeInBottom} 1s linear;
-    margin-top: -0.5rem;
-    background-color: ${({theme}) => theme.colors.background};
-  }
-  
   .dots {
     position: absolute;
-    top: 0%;
-    width: 12vmin;
-    left: 75%;
-    z-index: -1;
+    right: -1.5rem;
+    top: 2rem;
+    width: 8rem;
+    opacity: 0.45;
+    animation: ${float} 7s ease-in-out infinite;
+    z-index: 2;
   }
-`;
+`
 
-export const Block = styled.div`
-  background-color: ${({ theme }) => theme.colors.primary};
-  height: 1rem;
-  width: 1rem;
-`;
+export const PortraitBadge = styled.div`
+  position: absolute;
+  right: -1rem;
+  bottom: 1.25rem;
+  z-index: 3;
+  max-width: 18rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid ${({ theme }) => theme.colors.borderStrong};
+  border-radius: 1.3rem;
+  background: rgba(10, 13, 19, 0.8);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 24px 50px -35px ${({ theme }) => theme.colors.shadow};
 
-export const RepositoriesContainer = styled.div`
+  .status {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .dot {
+    width: 0.68rem;
+    height: 0.68rem;
+    margin-top: 0.35rem;
+    flex-shrink: 0;
+    border-radius: 999px;
+    background: ${({ theme }) => theme.colors.primary};
+    animation: ${pulse} 3.2s ease-in-out infinite;
+  }
+
+  p {
+    color: ${({ theme }) => theme.colors.gray};
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  strong {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: ${({ theme }) => theme.colors.text};
+  }
+
+  a {
+    color: ${({ theme }) => theme.colors.primaryStrong};
+  }
+
+  @media (max-width: 980px) {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    max-width: 100%;
+    margin-top: 1rem;
+  }
+`
+
+export const ProjectsGrid = styled.div`
   display: grid;
-  justify-items: center;
-  grid-template-columns: 1fr 1fr 1fr ;
-  gap: 2rem;
-  width: 100%;  
-  position: relative;
-  animation: ${cardsAnimation} 2s ;
-  z-index: 4;
-  background-color: ${(props) => props.theme.colors.background};
-  overflow: hidden;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  align-items: stretch;
+`
 
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr 1fr;
-  }
-`;
-
-export const SkillsContainer = styled.div`
-  gap: 2rem;
-  width: 100%;    
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-  z-index: 1;
-  background-color: ${(props) => props.theme.colors.background};
-  position: relative;
-  overflow: hidden;
-
-  @media (max-width: 1024px) {
-    flex-direction: column-reverse;
-  }
-`;
-
-export const SkillsInfo = styled.div`
+export const AboutGrid = styled.div`
   display: grid;
-  justify-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem ;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+  gap: 1.25rem;
 
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr 1fr;
+  @media (max-width: 960px) {
+    grid-template-columns: 1fr;
   }
-`;
+`
 
-export const SkillsFigures = styled.div`
-  min-width: 400px;
-
-  div{
-    width: 100px;
-    border: 1px solid ${(props) => props.theme.colors.gray};
-    height: 100px;
-    border-color: ${(props) => props.theme.colors.primary};
-  }
-
-  .dots1 {
-    position: relative;
-    top: 60%;
-    width: 10vmin;
-    left: 65%;
-    z-index: -1;
-
-    @media (max-width: 1024px) {
-      top: 10rem;
-    }
-  }
-
-  .dots2 {
-    position: relative;
-    top: -2%;
-    left: -20%;
-    width: 10vmin;
-    z-index: -1;
-
-    @media (max-width: 1024px) {
-      top: 2%;
-      left: 0%;
-    }
-  }
-
-  .square1 {
-    position: relative;
-    top: -20%;
-    left: 60%;
-    width: 10vmin;
-    z-index: -1;
-
-    @media (max-width: 1024px) {
-      left: 60%;
-      top: -6rem;
-    }
-  }
-
-  .square2 {
-    position: relative;
-    top: 0%;
-    left: 0%;
-    width: 10vmin;
-    z-index: -1;
-
-    @media (max-width: 1024px) {
-      left: 15%;
-      top: 23%;
-      position: sticky;
-    }
-  }
-
-  .line{
-    width: 8rem !important;
-    height: 1px;
-    position: relative;
-    top: -30%;
-    left: 30%;
-    width: 10vmin;
-    z-index: -1;
-    transform: rotate(50deg);
-    border-color: ${(props) => props.theme.colors.white};
-    animation: none;
-
-    @media (max-width: 1024px) {
-      top: -10rem;
-      left: 35%;
-    }
-  }
-
-  .line2{
-    width: 8rem!important;
-    height: 1px;
-    position: relative;
-    top: -30%;
-    left: 30%;
-    width: 10vmin;
-    z-index: -1;
-    transform: rotate(-35deg);
-    border-color: ${(props) => props.theme.colors.white};
-
-    @media (max-width: 1024px) {
-      top: -10rem;
-      left: 35%;
-    }
-  }
-
-`;
-
-export const AboutContainer = styled.div`
+export const AboutLead = styled.div`
+  ${panelStyle}
+  padding: 1.8rem;
   display: flex;
   flex-direction: column;
-  
-  div{ 
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  div p {
-    color: ${(props) => props.theme.colors.gray};
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.6rem;
-
-    a {
-      padding-left: 0.5rem;
-      color: #F9DD16;
-      font-weight: 600;
-      text-decoration: none;
-    }
-  }
-`;
-
-export const ContactsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
+  gap: 0.8rem;
   justify-content: space-between;
-  align-items: center;
-  
-  div{ 
-    display: flex;
-    flex-direction: column;
+
+  span {
+    width: fit-content;
+    color: ${({ theme }) => theme.colors.primaryStrong};
+    font-family: var(--font-mono), monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
   }
 
-  div p {
-    color: ${(props) => props.theme.colors.gray};
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.6rem;
+  h3 {
+    color: ${({ theme }) => theme.colors.text};
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.05em;
   }
 
-  div:first-child {
-    max-width: 50%;
+  p {
+    color: ${({ theme }) => theme.colors.gray};
+    line-height: 1.8;
+  }
+`
+
+export const AboutCopy = styled.div`
+  ${panelStyle}
+  padding: 1.8rem;
+
+  p {
+    color: ${({ theme }) => theme.colors.textMuted};
+    line-height: 1.9;
   }
 
-  div:not(:first-child) {
-    display: flex;
-    align-items: "center";
-    justify-content: flex-start;
-    gap: 1rem;
-    padding: 1rem;
-    border: 1px solid ${(props) => props.theme.colors.white};
-
-    h3 {
-      color: ${(props) => props.theme.colors.white};
-      font-size: 1.2rem;
-      font-weight: 500;
-    }
-
-    a {
-      text-decoration: none;
-      color: ${(props) => props.theme.colors.gray};
-
-      svg {
-        margin-right: 0.4rem;
-      }
-    }
+  p + p {
+    margin-top: 1rem;
   }
-`;
 
-export const WorksContainer = styled.div`
-  padding: 0rem 3rem;
+  a {
+    color: ${({ theme }) => theme.colors.primaryStrong};
+  }
+`
+
+export const WorksList = styled.div`
   display: grid;
-  grid-template-columns: auto auto;
   gap: 1rem;
-  align-content: space-evenly;
+`
 
-  div {
-    margin-bottom: 1rem;
+export const SkillsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+`
+
+export const ContactGrid = styled.div`
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
+  gap: 1.25rem;
+
+  @media (max-width: 920px) {
+    grid-template-columns: 1fr;
   }
-`;
+`
 
-export const Separator = styled.div`
-  width: 70%;
-  border-bottom: 1px solid ${(props) => props.theme.colors.white};
-`;
+export const ContactCard = styled.div`
+  ${panelStyle}
+  padding: 1.75rem;
+
+  h3 {
+    color: ${({ theme }) => theme.colors.text};
+    font-size: 1.2rem;
+    margin-bottom: 0.85rem;
+  }
+
+  p {
+    color: ${({ theme }) => theme.colors.textMuted};
+    line-height: 1.9;
+  }
+`
+
+export const ContactLinkList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid ${({ theme }) => theme.colors.border};
+    border-radius: 1rem;
+    color: ${({ theme }) => theme.colors.text};
+    background: rgba(255, 255, 255, 0.02);
+    transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+
+    svg {
+      color: ${({ theme }) => theme.colors.primary};
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      border-color: ${({ theme }) => theme.colors.primary};
+      background: ${({ theme }) => theme.colors.primaryMuted};
+    }
+  }
+`
+
+export const EmptyStateCard = styled.div`
+  ${panelStyle}
+  grid-column: 1 / -1;
+  padding: 1.6rem;
+
+  p {
+    color: ${({ theme }) => theme.colors.textMuted};
+    line-height: 1.8;
+  }
+`

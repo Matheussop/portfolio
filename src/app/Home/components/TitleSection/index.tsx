@@ -9,7 +9,8 @@ interface TitleSectionProps {
 }
 
 export function TitleSection({title, redirectTitle, id, redirectUrl=''}: TitleSectionProps){
-  const redirectTitleFormatted = redirectTitle + '  ~~>';
+  const redirectTitleFormatted = redirectTitle ? `${redirectTitle} ->` : ''
+
   return (
     <TitleSectionContainer id={id}>
       <div>

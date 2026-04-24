@@ -1,4 +1,3 @@
-import React from "react";
 import { InfosContainer, NameContainer, SkillContainer } from "./styles";
 
 export interface SkillProps{

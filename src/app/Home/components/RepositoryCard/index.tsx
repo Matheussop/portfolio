@@ -8,6 +8,7 @@ interface RepositoryProps extends ListRepositories{
 
 export function RepositoryCard(props: RepositoryProps){
   const { name, description, language, html_url } = props
+
   return (
     <RepositoryContainer>
       { language && (
@@ -20,7 +21,7 @@ export function RepositoryCard(props: RepositoryProps){
         {description && <p>{description}</p>}
       </InfosContainer>
       <LinkContainer>
-        <Link href={html_url} target="_blank"> GitHub </Link>
+        <Link href={html_url} target="_blank" rel="noopener noreferrer">Ver no GitHub</Link>
       </LinkContainer>
     </RepositoryContainer>
   )
