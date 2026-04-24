@@ -4,14 +4,15 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 2rem;
+  padding: 1.25rem clamp(1rem, 3vw, 2rem) 2rem;
   width: 100%;
+  position: relative;
  
-  > * {
-    width: 70%;
-
-    @media (max-width: 1540px) {
-      width: 95%;
-    }
+  > header,
+  > main,
+  > footer {
+    width: min(1120px, 100%);
+    position: relative;
+    z-index: 1;
   }
 `

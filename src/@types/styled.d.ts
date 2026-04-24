@@ -1,15 +1,22 @@
 import 'styled-components'
-import { defaultTheme } from '../styles/themes/default'
-
-type ThemeType = typeof defaultTheme
 
 declare module 'styled-components' {
-  export interface DefaultTheme extends ThemeType {
+  export interface DefaultTheme {
     colors: {
-      'background': string,
-      'primary': string,
-      'gray': string ,
-      'white': string,
+      background: string,
+      backgroundElevated: string,
+      surface: string,
+      surfaceAlt: string,
+      primary: string,
+      primaryStrong: string,
+      primaryMuted: string,
+      gray: string,
+      text: string,
+      textMuted: string,
+      white: string,
+      border: string,
+      borderStrong: string,
+      shadow: string,
     }
   }
 }
