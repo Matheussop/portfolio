@@ -47,7 +47,8 @@ export interface ListRepositories {
   name: string;
   description: string | null;
   html_url: string;
-  language?: string;
+  language: string | null;
+  pushed_at: string | null;
 }
 
 const skillsData: SkillProps[] = [
@@ -62,11 +63,21 @@ const skillsData: SkillProps[] = [
 
 const worksData: WorksCardProps[] = [
   {
-    title: 'Desenvolvedor Mobile e Web - Banco do Brasil',
-    companyName: 'Capgemini',
-    date: 'Março de 2022 - Até o momento',
+    title: 'Analista de Sistemas e Desenvolvimento (Banco do Brasil)',
+    companyName: 'Coopersystem',
+    date: 'Junho de 2026 - o momento',
     locale: 'Belo Horizonte, Minas Gerais, Brasil',
     period: 'Tempo integral',
+    description: 'Desenvolvimento front-end com Angular e mobile com React Native para o Banco do Brasil, com atuações em back-end utilizando Java.',
+    current: true,
+  },
+  {
+    title: 'Desenvolvedor',
+    companyName: 'Capgemini',
+    date: 'Março de 2022 - Junho de 2026',
+    locale: 'Remoto',
+    period: 'Tempo integral',
+    description: 'Desenvolvimento Java e React Native.',
   },
   {
     title: 'Desenvolvedor',
@@ -109,12 +120,7 @@ export default function Home() {
 
     async function getRepositories() {
       try {
-        const response = await api.get<ListRepositories[]>('https://api.github.com/users/matheussop/repos', {
-          params: {
-            per_page: 6,
-            sort: 'updated',
-          },
-        })
+        const response = await api.get<ListRepositories[]>('/repositories')
 
         if (isMounted) {
           setRepositories(response.data)
@@ -195,7 +201,7 @@ export default function Home() {
         <HeroSection id="top">
           <motion.div {...getReveal()}>
             <HeroContent>
-              <HeroEyebrow>Front-end • Mobile • Next.js</HeroEyebrow>
+              <HeroEyebrow>Front-end • Mobile • React Native</HeroEyebrow>
 
               <HeroTitle>
                 Eu sou um
@@ -238,7 +244,7 @@ export default function Home() {
                 <div className="status">
                   <div className="dot" />
                   <div>
-                    <strong>Atualmente trabalhando</strong>
+                    <strong>Coopersystem · Banco do Brasil</strong>
                     <p>
                       no{' '}
                       <Link
@@ -279,8 +285,8 @@ export default function Home() {
             {!isLoading && hasRepositoryError && (
               <EmptyStateCard as={motion.div} {...getReveal(0.08)}>
                 <p>
-                  Não foi possível carregar os repositórios agora. Ainda assim, a seção
-                  continua pronta para destacar os últimos projetos publicados no GitHub.
+                  Não foi possível carregar os projetos agora. Você pode encontrá-los no{' '}
+                  <a href="https://github.com/Matheussop" target="_blank" rel="noopener noreferrer">GitHub</a>.
                 </p>
               </EmptyStateCard>
             )}
@@ -305,12 +311,12 @@ export default function Home() {
             <AboutCopy as={motion.div} {...getReveal(0.12)}>
               <p>
                 Um profissional dedicado e entusiasta na área de TI. Estou no mercado
-                desde 2020, atuando mais focado na área de front-end. Meu entusiasmo pelo
+                desde 2019, atuando mais focado na área de front-end. Meu entusiasmo pelo
                 mundo da tecnologia me levou a me formar em Ciência da Computação, uma
                 jornada que me proporcionou uma base sólida de conhecimento e habilidades.
               </p>
               <p>
-                Atualmente trabalhando no{' '}
+                Atualmente na Coopersystem, atuando no{' '}
                 <Link
                   href="https://www.bb.com.br/site/pra-voce/capitalizacao/"
                   target="_blank"
@@ -318,8 +324,8 @@ export default function Home() {
                 >
                   Banco do Brasil
                 </Link>{' '}
-                como desenvolvedor front-end (angular) e mobile. Tendo também algumas
-                atuações em back-end utilizando Java.
+                como desenvolvedor front-end com Angular e mobile com React Native. Também
+                atuo em back-end com Java.
               </p>
             </AboutCopy>
           </AboutGrid>
@@ -332,7 +338,7 @@ export default function Home() {
 
           <WorksList as={motion.div} {...staggerGroup}>
             {worksData.map((work) => (
-              <motion.div key={work.title} {...staggerItem}>
+              <motion.div key={`${work.companyName}-${work.date}`} {...staggerItem}>
                 <WorksCard {...work} />
               </motion.div>
             ))}

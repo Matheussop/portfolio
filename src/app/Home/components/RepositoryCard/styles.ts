@@ -31,7 +31,7 @@ export const InfosContainer = styled.div`
   gap: 0.8rem;
   flex: 1;
 
-  h1{
+  h3{
     color: ${(props) => props.theme.colors.text};
     font-size: 1.4rem;
     font-weight: 700;
@@ -40,6 +40,13 @@ export const InfosContainer = styled.div`
 
   p {
     line-height: 1.75;
+  }
+
+  .published {
+    margin-top: auto;
+    color: ${({ theme }) => theme.colors.gray};
+    font-family: var(--font-mono), monospace;
+    font-size: 0.78rem;
   }
 `;
 

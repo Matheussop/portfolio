@@ -14,7 +14,7 @@ export function Footer() {
             <p>matheussopluiz@outlook.com</p>
           </div>
           <About>
-            Desenvolvedor Web e Mobile | Capgemini (Banco do Brasil)
+            Desenvolvedor front-end e mobile | Coopersystem (Banco do Brasil)
           </About>
         </Infos>
 

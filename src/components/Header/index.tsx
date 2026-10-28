@@ -1,6 +1,6 @@
 "use client"
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { HeaderContainer } from './styles'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -19,6 +19,7 @@ export function Header() {
   const pathName = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('top')
+  const shouldReduceMotion = useReducedMotion()
   const isHomePath = useMemo(() => pathName === '/' || pathName === '/Home', [pathName])
 
   useEffect(() => {
@@ -108,10 +109,10 @@ export function Header() {
           <motion.div
             id="mobile-navigation"
             className="mobileNavigation"
-            initial={{ opacity: 0, y: -10, scale: 0.98 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: -10, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.98 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
+            exit={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.2, ease: 'easeOut' }}
           >
             {menuItems.map((item) => {
               const isActive = activeSection === item.section

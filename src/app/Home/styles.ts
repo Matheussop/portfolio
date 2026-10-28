@@ -23,6 +23,16 @@ const pulse = keyframes`
   }
 `
 
+const drift = keyframes`
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(1.5rem, -1.25rem, 0); }
+`
+
+const shimmer = keyframes`
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+`
+
 const buttonStyle = css`
   display: inline-flex;
   align-items: center;
@@ -81,6 +91,7 @@ export const HomeContainer = styled.div`
     top: 3rem;
     right: 2rem;
     background: rgba(211, 161, 108, 0.18);
+    animation: ${drift} 12s ease-in-out infinite;
   }
 
   &::after {
@@ -89,6 +100,7 @@ export const HomeContainer = styled.div`
     left: -2rem;
     top: 30rem;
     background: rgba(85, 115, 184, 0.14);
+    animation: ${drift} 16s ease-in-out infinite reverse;
   }
 `
 
@@ -145,6 +157,11 @@ export const HeroTitle = styled.h1`
 
   span {
     color: ${({ theme }) => theme.colors.primary};
+    background: linear-gradient(100deg, ${({ theme }) => theme.colors.primary}, #ffe1bc, ${({ theme }) => theme.colors.primary});
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: ${shimmer} 8s ease-in-out infinite;
   }
 `
 
@@ -192,6 +209,18 @@ export const HeroVisual = styled.div`
   justify-content: center;
   min-height: 34rem;
 
+  &::before {
+    content: '';
+    position: absolute;
+    width: min(90%, 30rem);
+    aspect-ratio: 1;
+    border: 1px solid rgba(211, 161, 108, 0.13);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2.5rem rgba(211, 161, 108, 0.025);
+    animation: ${float} 9s ease-in-out infinite;
+    pointer-events: none;
+  }
+
   @media (max-width: 980px) {
     min-height: auto;
   }
@@ -215,6 +244,12 @@ export const PortraitFrame = styled.div`
     height: auto;
     object-fit: cover;
     filter: grayscale(10%) saturate(0.92) contrast(1.04);
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.8s ease;
+  }
+
+  &:hover .portraitImage {
+    transform: scale(1.04);
+    filter: grayscale(0) saturate(1.05) contrast(1.04);
   }
 
   .dots {
@@ -422,5 +457,11 @@ export const EmptyStateCard = styled.div`
   p {
     color: ${({ theme }) => theme.colors.textMuted};
     line-height: 1.8;
+  }
+
+  a {
+    color: ${({ theme }) => theme.colors.primaryStrong};
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
   }
 `
